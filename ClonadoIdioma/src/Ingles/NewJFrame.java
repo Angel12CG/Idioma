@@ -19,17 +19,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class NewJFrame extends javax.swing.JFrame {
 
     public static ConsultasBD consultasBD = new ConsultasBD();
-    int vida = 5;
-    int posicion = 1;
+    int vida, posicion;
     ImageIcon img;
     Musica Music = new Musica();
     boolean pp = false;
-    String N="";
+    String N="", N2="";
 
     public NewJFrame() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("megaman.png")).getImage());
-
         jTabbedPane2.setEnabledAt(1, false);
         jTabbedPane2.setEnabledAt(2, false);
         jTabbedPane2.setEnabledAt(3, false);
@@ -38,8 +35,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPcompletar.setVisible(false);
         jPimagenes.setVisible(false);
         jPtraducir.setVisible(false);
-        jPotro.setVisible(false);
-
+        jPotro.setVisible(false);    
     }
     
     
@@ -91,6 +87,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jPcompletar = new javax.swing.JPanel();
         jTextField5 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
         jPimagenes = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -101,6 +99,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
         jPotro = new javax.swing.JPanel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jButton4 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -110,7 +110,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proyecto Final ICO-19");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -136,6 +135,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 jPasswordField1MouseClicked(evt);
             }
         });
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 300, 173, -1));
 
         jLabel8.setFont(new java.awt.Font("Viner Hand ITC", 2, 18)); // NOI18N
@@ -145,21 +149,22 @@ public class NewJFrame extends javax.swing.JFrame {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 390, 173, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 173, -1));
 
-        jButton3.setText("Iniciar Sesion");
+        jButton3.setText("Iniciar Sesión");
+        jButton3.setOpaque(true);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 360, 160, 30));
 
         jLabel19.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 0, 51)));
         jLabel19.setOpaque(true);
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 480, 280));
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/Mega Rayquaza.jpg"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/pokemon.jpg"))); // NOI18N
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 670));
 
         jTabbedPane2.addTab("Login", jPanel1);
@@ -278,10 +283,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/mapa.jpg"))); // NOI18N
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, 673));
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 1010, 673));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/heart.gif"))); // NOI18N
-        jLabel18.setText("      5");
+        jLabel18.setText("      3");
         jPanel4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 110, 110));
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/DADO.gif"))); // NOI18N
@@ -300,28 +305,51 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setText("Help Cost 1 life");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPcompletarLayout = new javax.swing.GroupLayout(jPcompletar);
         jPcompletar.setLayout(jPcompletarLayout);
         jPcompletarLayout.setHorizontalGroup(
             jPcompletarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPcompletarLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(jPcompletarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPcompletarLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPcompletarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPcompletarLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPcompletarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPcompletarLayout.setVerticalGroup(
             jPcompletarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPcompletarLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(26, 26, 26)
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel25.setText("jLabel25");
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
 
         jLabel26.setText("jLabel25");
         jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -331,8 +359,18 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jLabel27.setText("jLabel25");
+        jLabel27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel27MouseClicked(evt);
+            }
+        });
 
         jLabel28.setText("jLabel25");
+        jLabel28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel28MouseClicked(evt);
+            }
+        });
 
         jLabel29.setText("jLabel29");
 
@@ -340,22 +378,19 @@ public class NewJFrame extends javax.swing.JFrame {
         jPimagenes.setLayout(jPimagenesLayout);
         jPimagenesLayout.setHorizontalGroup(
             jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPimagenesLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPimagenesLayout.createSequentialGroup()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPimagenesLayout.createSequentialGroup()
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
             .addGroup(jPimagenesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(23, 23, 23)
+                .addGroup(jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPimagenesLayout.createSequentialGroup()
+                        .addGroup(jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPimagenesLayout.setVerticalGroup(
             jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +403,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPimagenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jLabel29)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabel30.setText("Traduce la siguiente palabra");
@@ -396,15 +431,36 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(110, 110, 110))
         );
 
+        jProgressBar1.setOrientation(1);
+
+        jButton4.setText("jButton4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPotroLayout = new javax.swing.GroupLayout(jPotro);
         jPotro.setLayout(jPotroLayout);
         jPotroLayout.setHorizontalGroup(
             jPotroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGroup(jPotroLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(jButton4)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         jPotroLayout.setVerticalGroup(
             jPotroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPotroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(98, 98, 98))
+            .addGroup(jPotroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -440,7 +496,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jPanel4.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 240, 250));
 
-        jLabel32.setText("jLabel32");
+        jLabel32.setText("Pause");
         jLabel32.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel32MouseClicked(evt);
@@ -448,7 +504,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel4.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 60, 60));
 
-        jLabel33.setText("jLabel33");
+        jLabel33.setText("Stop");
         jLabel33.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel33MouseClicked(evt);
@@ -465,7 +521,16 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Game", jPanel4);
 
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -596,6 +661,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        jLabel21.setVisible(false);
         Random rnd = new Random();
         int b = (int) (rnd.nextDouble() * 6 + 1); // Dado
         JOptionPane.showMessageDialog(null, "El dado cayo en " + b);
@@ -605,14 +671,21 @@ public class NewJFrame extends javax.swing.JFrame {
             Snake(posicion);
         }
         if (posicion >= 40) {
-            JOptionPane.showMessageDialog(null, "Has ganado joder");
             GameOver(true);
         } else {
             tipo_de_juego(posicion);
         }
+        jLayeredPane1.setVisible(true);
+        
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        posicion = 0;
+        vida = 3;
+        jLabel18.setText("      "+vida);
+        jLayeredPane1.setVisible(false);
+        jButton1.setVisible(false);
+        jLabel21.setVisible(true);
         jTabbedPane2.setEnabledAt(3, true);
         jTabbedPane2.setSelectedIndex(3);
         //********* Carga el sonido
@@ -645,8 +718,66 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        System.out.println(jLabel26.getIcon().toString());
+        N2="1";
+        if(N.equals(N2)){
+            vidas(1);
+        }else{
+            vidas(0);
+        }
     }//GEN-LAST:event_jLabel26MouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+        N2="0";
+        if(N.equals(N2)){
+            vidas(1);
+        }else{
+            vidas(0);
+        }
+    }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
+        N2="2";
+        if(N.equals(N2)){
+            vidas(1);
+        }else{
+            vidas(0);
+        }
+    }//GEN-LAST:event_jLabel27MouseClicked
+
+    private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
+        N2="3";
+        if(N.equals(N2)){
+            vidas(1);
+        }else{
+            vidas(0);
+        }
+    }//GEN-LAST:event_jLabel28MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int n = jProgressBar1.getValue();
+        n+=4;
+        if(n>=101){
+            vidas(2);
+            n=0;
+            jProgressBar1.setValue(n);
+        }else{
+            jProgressBar1.setValue(n);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if(vida>=2){
+            vidas(0);
+            jButton5.setVisible(false);
+            jLabel31.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "vidas insuficientes");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        this.jButton3ActionPerformed(evt);
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     public void Snake(int p) {
         if (p == 5) {
@@ -697,7 +828,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public void tipo_de_juego(int n) {
         String Tipo = "";
-        if (n == 5 || n == 9 || n == 13 || n == 17 || n == 21 || n == 25 || n == 29 || n == 33 || n == 37) {
+        if (       n == 1 || n == 5 || n == 9 || n == 13 || n == 17 || n == 21 || n == 25 || n == 29 || n == 33 || n == 37) {
             Tipo = "Blue";
         } else if (n == 2 || n == 6 || n == 10 || n == 14 || n == 18 || n == 22 || n == 26 || n == 30 || n == 34 || n == 38) {
             Tipo = "Yellow";
@@ -719,27 +850,38 @@ public class NewJFrame extends javax.swing.JFrame {
                 jPimagenes.setVisible(true);
                 jPtraducir.setVisible(false);
                 jPotro.setVisible(false);
+                JuegoImagenes();
                 break;
             case "Green":
                 jPcompletar.setVisible(false);
                 jPimagenes.setVisible(false);
                 jPtraducir.setVisible(true);
                 jPotro.setVisible(false);
+                jLabel21.setVisible(true);
                 break;
             case "Red":
                 jPcompletar.setVisible(false);
                 jPimagenes.setVisible(false);
                 jPtraducir.setVisible(false);
                 jPotro.setVisible(true);
+                jLabel21.setVisible(true);
                 break;
         }
     }
 
     public void vidas(int gp) {
-        if (gp == 1) {
+        if (gp == 2) {
             vida++;
-        } else {
+            jLabel21.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Very Good");
+            jLayeredPane1.setVisible(false);
+        }else if(gp==1){
+            jLabel21.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Very Good");
+            jLayeredPane1.setVisible(false);
+        } else if (gp==0){
             vida--;
+            JOptionPane.showMessageDialog(null, "Bad");
             if (vida == 0) {
                 GameOver(false);
             }
@@ -752,8 +894,14 @@ public class NewJFrame extends javax.swing.JFrame {
         int r = (int) (rnd.nextDouble() * 50 + 1);
         NewInterface aux = consultasBD.SinImagen(r);
         N = aux.getWord();
-        jLabel24.setText("Palabra a completar: "+aux.obtenerDatos());
         jTextField5.setText(aux.obtenerDatos());
+        jLabel24.setText("Palabra a completar: "+jTextField5.getText());
+        //Pista
+        jLabel31.setVisible(false);
+        jButton5.setVisible(true);
+        img = new ImageIcon("src/ImagesW/"+aux.getIdWord()+"_"+aux.getWord()+".jpg");
+        jLabel31.setIcon(new ImageIcon(img.getImage().getScaledInstance(105, 105, Image.SCALE_REPLICATE)));
+        
     }
     
     public void JuegoImagenes(){
@@ -776,17 +924,17 @@ public class NewJFrame extends javax.swing.JFrame {
             }else if(i==2){
                 aux = consultasBD.ConImagen(rand);
                 img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
-                jLabel28.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel28.getWidth(), jLabel28.getHeight(), Image.SCALE_SMOOTH)));
+                jLabel27.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel27.getWidth(), jLabel27.getHeight(), Image.SCALE_SMOOTH)));
             }else if(i==3){
                 aux = consultasBD.ConImagen(rand);
                 img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
-                jLabel27.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel27.getWidth(), jLabel27.getHeight(), Image.SCALE_SMOOTH)));
+                jLabel28.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel28.getWidth(), jLabel28.getHeight(), Image.SCALE_SMOOTH)));
             }
         }
         rand = (int) (rnd.nextDouble() * 3 + 0);
         aux = consultasBD.ConImagen(x[rand]);
-        N = aux.getWord();
-        jLabel29.setText("Select "+N);
+        jLabel29.setText("Select "+aux.getWord());
+        N = Integer.toString(rand);
     }
     
     public void GameOver(boolean go){
@@ -804,6 +952,7 @@ public class NewJFrame extends javax.swing.JFrame {
         }
         jTabbedPane2.setEnabledAt(3, false);
         jTabbedPane2.setSelectedIndex(2);
+        jButton1.setVisible(true);
     }
     
     private static void copyFileUsingFileChannels(File source, File dest) throws IOException {
@@ -854,6 +1003,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -878,6 +1029,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
@@ -898,6 +1050,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPcompletar;
     private javax.swing.JPanel jPimagenes;
     private javax.swing.JPanel jPotro;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel jPtraducir;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextField jTextField1;
