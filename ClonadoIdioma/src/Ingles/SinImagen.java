@@ -6,8 +6,8 @@ public abstract class SinImagen extends Words {
 
     public String Word2;
 
-    public SinImagen(int IdWord, String Word) {
-        super(IdWord, Word);
+    public SinImagen(int IdWord, String Word, String traduccion) {
+        super(IdWord, Word,traduccion);
         Word2 = Word;
     }
 
@@ -33,6 +33,5 @@ public abstract class SinImagen extends Words {
     @Override
     public String obtenerDatos() {
         return Alterar(Word2);
-    }
-
+    }    
 }

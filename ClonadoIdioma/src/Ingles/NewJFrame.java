@@ -15,7 +15,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-
 public class NewJFrame extends javax.swing.JFrame {
 
     public static ConsultasBD consultasBD = new ConsultasBD();
@@ -23,7 +22,8 @@ public class NewJFrame extends javax.swing.JFrame {
     ImageIcon img;
     Musica Music = new Musica();
     boolean pp = false;
-    String N="", N2="";
+    //boolean crono = false;
+    String N = "", N2 = "";
 
     public NewJFrame() {
         initComponents();
@@ -35,10 +35,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jPcompletar.setVisible(false);
         jPimagenes.setVisible(false);
         jPtraducir.setVisible(false);
-        jPotro.setVisible(false);    
+        jPotro.setVisible(false);
     }
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -98,6 +97,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPtraducir = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         jPotro = new javax.swing.JPanel();
         jProgressBar1 = new javax.swing.JProgressBar();
         jButton4 = new javax.swing.JButton();
@@ -152,7 +152,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, 173, -1));
 
         jButton3.setText("Iniciar Sesión");
-        jButton3.setOpaque(true);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -185,8 +184,12 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 170, 170));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ingles/portada.jpg"))); // NOI18N
         jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 720, 270));
         jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 130, -1));
         jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 130, -1));
@@ -408,32 +411,47 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
         jLabel30.setText("Traduce la siguiente palabra");
+
+        jLabel34.setText("jLabel34");
 
         javax.swing.GroupLayout jPtraducirLayout = new javax.swing.GroupLayout(jPtraducir);
         jPtraducir.setLayout(jPtraducirLayout);
         jPtraducirLayout.setHorizontalGroup(
             jPtraducirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPtraducirLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPtraducirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(jPtraducirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPtraducirLayout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(jLabel30)))
+                    .addGroup(jPtraducirLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPtraducirLayout.setVerticalGroup(
             jPtraducirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPtraducirLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addComponent(jLabel30)
-                .addGap(49, 49, 49)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jProgressBar1.setOrientation(1);
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Iniciar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -448,19 +466,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addComponent(jButton4)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPotroLayout.setVerticalGroup(
             jPotroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPotroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(98, 98, 98))
             .addGroup(jPotroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(jPotroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPotroLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(98, 98, 98))
+                    .addGroup(jPotroLayout.createSequentialGroup()
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(35, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -603,7 +623,7 @@ public class NewJFrame extends javax.swing.JFrame {
                     jTextField2.setText(Integer.toString(aux.getN_D_J()));
                     jTextField3.setText(Integer.toString(aux.getN_D_J_G()));
                     jTextField4.setText(Integer.toString(aux.getN_D_J_P()));
-                    
+
                     img = new ImageIcon("src/img/pause.png");
                     jLabel32.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel32.getWidth(), jLabel32.getHeight(), Image.SCALE_SMOOTH)));
                     img = new ImageIcon("src/img/stop.png");
@@ -618,6 +638,17 @@ public class NewJFrame extends javax.swing.JFrame {
                         img = new ImageIcon("src/img/naruto.jpg");
                     }
                     jLabel6.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH)));
+
+                    //*carga imagen de portada
+                    sFichero = ("src/imgportada/" + txtNombre.getText() + txtId.getText() + ".jpg");
+                    fichero = new File(sFichero);
+                    if (fichero.exists()) {
+                        img = new ImageIcon(sFichero);
+                    } else {
+                        img = new ImageIcon("src/imgportada/default.jpg");
+                    }
+                    jLabel7.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel7.getWidth(), jLabel7.getHeight(), Image.SCALE_SMOOTH)));
+
                     //*********
                     jTabbedPane2.setSelectedIndex(1);
                     jTabbedPane2.setEnabledAt(0, false);
@@ -633,8 +664,8 @@ public class NewJFrame extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
-       
-    
+
+
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         if (txtId.isEditable()) {
             JOptionPane.showMessageDialog(this, "Primero inicie seción");
@@ -676,31 +707,31 @@ public class NewJFrame extends javax.swing.JFrame {
             tipo_de_juego(posicion);
         }
         jLayeredPane1.setVisible(true);
-        
+
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         posicion = 0;
         vida = 3;
-        jLabel18.setText("      "+vida);
+        jLabel18.setText("      " + vida);
         jLayeredPane1.setVisible(false);
         jButton1.setVisible(false);
         jLabel21.setVisible(true);
         jTabbedPane2.setEnabledAt(3, true);
         jTabbedPane2.setSelectedIndex(3);
         //********* Carga el sonido
-        Music.Play("src/songs/Tetris.mp3");
+        Music.Play("src/songs/Studiopolis.mp3");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jLabel32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel32MouseClicked
-        if(pp==true){
+        if (pp == true) {
             Music.Resume();
             img = new ImageIcon("src/img/pause.png");
-            pp=false;
-        }else{
+            pp = false;
+        } else {
             Music.Pause();
             img = new ImageIcon("src/img/play.png");
-            pp=true;
+            pp = true;
         }
         jLabel32.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel32.getWidth(), jLabel32.getHeight(), Image.SCALE_SMOOTH)));
     }//GEN-LAST:event_jLabel32MouseClicked
@@ -710,67 +741,72 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel33MouseClicked
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        if(N.equals(jTextField5.getText())){
+        if (N.equals(jTextField5.getText())) {
             vidas(1);
-        }else{
+        } else {
             vidas(0);
         }
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        N2="1";
-        if(N.equals(N2)){
+        N2 = "1";
+        if (N.equals(N2)) {
             vidas(1);
-        }else{
+        } else {
             vidas(0);
         }
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
-        N2="0";
-        if(N.equals(N2)){
+        N2 = "0";
+        if (N.equals(N2)) {
             vidas(1);
-        }else{
+        } else {
             vidas(0);
         }
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        N2="2";
-        if(N.equals(N2)){
+        N2 = "2";
+        if (N.equals(N2)) {
             vidas(1);
-        }else{
+        } else {
             vidas(0);
         }
     }//GEN-LAST:event_jLabel27MouseClicked
 
     private void jLabel28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel28MouseClicked
-        N2="3";
-        if(N.equals(N2)){
+        N2 = "3";
+        if (N.equals(N2)) {
             vidas(1);
-        }else{
+        } else {
             vidas(0);
         }
     }//GEN-LAST:event_jLabel28MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int n = jProgressBar1.getValue();
-        n+=4;
-        if(n>=101){
+        n += 4;
+        /*if (crono == false) {
+        crono = true;
+        cronometro();
+        }*/
+        if (n >= 101) {
             vidas(2);
-            n=0;
+            n = 0;
             jProgressBar1.setValue(n);
-        }else{
+            //crono = false;
+        } else {
             jProgressBar1.setValue(n);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if(vida>=2){
+        if (vida >= 2) {
             vidas(0);
             jButton5.setVisible(false);
             jLabel31.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "vidas insuficientes");
         }
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -778,6 +814,40 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         this.jButton3ActionPerformed(evt);
     }//GEN-LAST:event_jPasswordField1ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        if (N.equals(jTextField6.getText())) {
+            vidas(1);
+            jTextField6.setText("");
+        } else {
+            vidas(0);
+        }
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        if (txtId.isEditable()) {
+            JOptionPane.showMessageDialog(this, "Primero inicie seción");
+        } else {
+            try {
+                JOptionPane.showMessageDialog(null, "Ingresar Foto");
+                JFileChooser chooser = new JFileChooser();
+                chooser.setDialogTitle("Seleccione una imagen");
+                FileNameExtensionFilter filtroImagen = new FileNameExtensionFilter("JPG", "jpg");
+                chooser.setFileFilter(filtroImagen);
+                int flag = chooser.showOpenDialog(null);
+                if (flag == JFileChooser.APPROVE_OPTION) {
+                    File fo = chooser.getSelectedFile();
+                    img = new ImageIcon(fo.getAbsolutePath());
+                    jLabel7.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel7.getWidth(), jLabel7.getHeight(), Image.SCALE_SMOOTH)));
+                    File source = new File(fo.getAbsolutePath());
+                    File dest = new File("src/imgportada/" + txtNombre.getText() + txtId.getText() + ".jpg");
+                    copyFileUsingFileChannels(source, dest);
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     public void Snake(int p) {
         if (p == 5) {
@@ -828,7 +898,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public void tipo_de_juego(int n) {
         String Tipo = "";
-        if (       n == 1 || n == 5 || n == 9 || n == 13 || n == 17 || n == 21 || n == 25 || n == 29 || n == 33 || n == 37) {
+        if (n == 1 || n == 5 || n == 9 || n == 13 || n == 17 || n == 21 || n == 25 || n == 29 || n == 33 || n == 37) {
             Tipo = "Blue";
         } else if (n == 2 || n == 6 || n == 10 || n == 14 || n == 18 || n == 22 || n == 26 || n == 30 || n == 34 || n == 38) {
             Tipo = "Yellow";
@@ -857,7 +927,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 jPimagenes.setVisible(false);
                 jPtraducir.setVisible(true);
                 jPotro.setVisible(false);
-                jLabel21.setVisible(true);
+                traduce();
                 break;
             case "Red":
                 jPcompletar.setVisible(false);
@@ -865,6 +935,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 jPtraducir.setVisible(false);
                 jPotro.setVisible(true);
                 jLabel21.setVisible(true);
+                jProgressBar1.setValue(0);
                 break;
         }
     }
@@ -875,11 +946,11 @@ public class NewJFrame extends javax.swing.JFrame {
             jLabel21.setVisible(true);
             JOptionPane.showMessageDialog(null, "Very Good");
             jLayeredPane1.setVisible(false);
-        }else if(gp==1){
+        } else if (gp == 1) {
             jLabel21.setVisible(true);
             JOptionPane.showMessageDialog(null, "Very Good");
             jLayeredPane1.setVisible(false);
-        } else if (gp==0){
+        } else if (gp == 0) {
             vida--;
             JOptionPane.showMessageDialog(null, "Bad");
             if (vida == 0) {
@@ -889,72 +960,90 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel18.setText("      " + vida);
     }
 
-    public void JuegoCompletar(){
+    public void JuegoCompletar() {
         Random rnd = new Random();
         int r = (int) (rnd.nextDouble() * 50 + 1);
         NewInterface aux = consultasBD.SinImagen(r);
         N = aux.getWord();
         jTextField5.setText(aux.obtenerDatos());
-        jLabel24.setText("Palabra a completar: "+jTextField5.getText());
+        jLabel24.setText("Palabra a completar: " + jTextField5.getText());
         //Pista
         jLabel31.setVisible(false);
         jButton5.setVisible(true);
-        img = new ImageIcon("src/ImagesW/"+aux.getIdWord()+"_"+aux.getWord()+".jpg");
+        img = new ImageIcon("src/ImagesW/" + aux.getIdWord() + "_" + aux.getWord() + ".jpg");
         jLabel31.setIcon(new ImageIcon(img.getImage().getScaledInstance(105, 105, Image.SCALE_REPLICATE)));
-        
+
     }
-    
-    public void JuegoImagenes(){
+
+    public void traduce() {
+        Random rnd = new Random();
+        int r = (int) (rnd.nextDouble() * 50 + 1);
+        NewInterface aux = consultasBD.SinImagen(r);
+        jLabel34.setText(aux.getWord());
+        N = aux.getTraduccion();
+    }
+
+    public void JuegoImagenes() {
         Random rnd = new Random();
         int x[] = new int[4];
         int rand;
         NewInterface aux;
-        
-        for(int i=0;i<=3;i++){
+
+        for (int i = 0; i <= 3; i++) {
             rand = (int) (rnd.nextDouble() * 50 + 1);
-            x[i]=rand;
-            if(i==0){
+            x[i] = rand;
+            if (i == 0) {
                 aux = consultasBD.ConImagen(rand);
-                img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
+                img = new ImageIcon("src/ImagesW/" + aux.obtenerDatos());
                 jLabel25.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel25.getWidth(), jLabel25.getHeight(), Image.SCALE_SMOOTH)));
-            }else if(i==1){
+            } else if (i == 1) {
                 aux = consultasBD.ConImagen(rand);
-                img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
+                img = new ImageIcon("src/ImagesW/" + aux.obtenerDatos());
                 jLabel26.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel26.getWidth(), jLabel26.getHeight(), Image.SCALE_SMOOTH)));
-            }else if(i==2){
+            } else if (i == 2) {
                 aux = consultasBD.ConImagen(rand);
-                img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
+                img = new ImageIcon("src/ImagesW/" + aux.obtenerDatos());
                 jLabel27.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel27.getWidth(), jLabel27.getHeight(), Image.SCALE_SMOOTH)));
-            }else if(i==3){
+            } else if (i == 3) {
                 aux = consultasBD.ConImagen(rand);
-                img = new ImageIcon("src/ImagesW/"+aux.obtenerDatos());
+                img = new ImageIcon("src/ImagesW/" + aux.obtenerDatos());
                 jLabel28.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel28.getWidth(), jLabel28.getHeight(), Image.SCALE_SMOOTH)));
             }
         }
         rand = (int) (rnd.nextDouble() * 3 + 0);
         aux = consultasBD.ConImagen(x[rand]);
-        jLabel29.setText("Select "+aux.getWord());
+        jLabel29.setText("Select " + aux.getWord());
         N = Integer.toString(rand);
     }
-    
-    public void GameOver(boolean go){
+
+    public void GameOver(boolean go) {
         img = new ImageIcon("src/img/Game-Over.jpg");
         jLabel23.setIcon(new ImageIcon(img.getImage().getScaledInstance(jLabel23.getWidth(), jLabel23.getHeight(), Image.SCALE_SMOOTH)));
         JOptionPane.showMessageDialog(null, "Game Over");
         Music.Stop();
         Datos aux = consultasBD.buscarPorId(Integer.parseInt(txtId.getText()));
-        if(go == false){
+        if (go == false) {
             Music.Play("src/songs/GameOver.mp3");
-            consultasBD.modificarJugador(aux.getIdJugador(), aux.getNombre(), aux.getN_Usuario(), aux.getContraseña(), aux.getN_D_J()+1, aux.getN_D_J_G(), aux.getN_D_J_P()+1);
-        }else{
+            consultasBD.modificarJugador(aux.getIdJugador(), aux.getNombre(), aux.getN_Usuario(), aux.getContraseña(), aux.getN_D_J() + 1, aux.getN_D_J_G(), aux.getN_D_J_P() + 1);
+        } else {
             Music.Play("src/songs/Winner.mp3");
-            consultasBD.modificarJugador(aux.getIdJugador(), aux.getNombre(), aux.getN_Usuario(), aux.getContraseña(), aux.getN_D_J()+1, aux.getN_D_J_G()+1, aux.getN_D_J_P());
+            consultasBD.modificarJugador(aux.getIdJugador(), aux.getNombre(), aux.getN_Usuario(), aux.getContraseña(), aux.getN_D_J() + 1, aux.getN_D_J_G() + 1, aux.getN_D_J_P());
         }
         jTabbedPane2.setEnabledAt(3, false);
         jTabbedPane2.setSelectedIndex(2);
         jButton1.setVisible(true);
     }
-    
+
+    /* public void cronometro() {
+    for (int segundos = 0; segundos < 6; segundos++) {
+    try {
+    Thread.sleep(1000); //retraso de un segundo
+    } catch (InterruptedException e) {
+    }
+    System.out.println(segundos);
+    }
+    }*/
+
     private static void copyFileUsingFileChannels(File source, File dest) throws IOException {
         FileChannel inputChannel = null;
         FileChannel outputChannel = null;
@@ -1032,6 +1121,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

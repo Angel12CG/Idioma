@@ -56,6 +56,4 @@ public class MySqlBD {
         }
         return true;
     }
-    
-
 }

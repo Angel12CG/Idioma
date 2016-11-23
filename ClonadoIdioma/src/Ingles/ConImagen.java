@@ -2,8 +2,8 @@ package Ingles;
 public abstract class ConImagen extends Words{
     public String NameImage;
     
-    public ConImagen(int IdWord, String Word){
-        super(IdWord,Word);
+    public ConImagen(int IdWord, String Word, String traduccion){
+        super(IdWord,Word,traduccion);
         NameImage=IdWord+"_"+Word+".jpg";
     }
 

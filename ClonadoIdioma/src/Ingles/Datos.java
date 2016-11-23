@@ -73,7 +73,4 @@ public class Datos{
     public void setN_D_J_P(int N_D_J_P) {
         this.N_D_J_P = N_D_J_P;
     }
-
-
-
 }

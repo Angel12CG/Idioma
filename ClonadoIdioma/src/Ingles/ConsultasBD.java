@@ -73,7 +73,7 @@ public class ConsultasBD {
         if(rs != null){
             try {
                 while(rs.next()){
-                    ConImagen = new ConImagen(rs.getInt("IdWord"),rs.getString("Word")){};
+                    ConImagen = new ConImagen(rs.getInt("IdWord"),rs.getString("Word"),rs.getString("traduccion")){};
                 }
             } catch(Exception e) {
             }
@@ -87,7 +87,7 @@ public class ConsultasBD {
         if(rs != null){
             try {
                 while(rs.next()){
-                    SinImagen = new SinImagen(rs.getInt("IdWord"),rs.getString("Word")){};
+                    SinImagen = new SinImagen(rs.getInt("IdWord"),rs.getString("Word"),rs.getString("traduccion")){};
                 }
             } catch(Exception e) {
             }
